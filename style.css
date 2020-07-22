@@ -372,6 +372,28 @@ article{
 .comment{
 	margin-top: 2em;
 }
+textarea{
+	height: 100px;
+	width: 70%;
+	padding: 10px;
+}
+.form button, .btn{
+	cursor: pointer;
+	background-color: #3498db;
+	border: 2px solid #3498db;
+	border-radius: 4px;
+	color: #fff;
+	display: block;
+	font-size: 16px;
+	padding: 10px;
+	margin-top: 20px;
+
+}
+.btn{
+width: 30%;
+margin-left: 1em;
+
+}
 
 
 
