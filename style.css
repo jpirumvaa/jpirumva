@@ -22,7 +22,7 @@ body {
 	width: 100%;
 }
 .projects-container{
-	color: black;
+	color:var(--mainBlack);
 	background-color: #ECF0F1;
 }
 .container::after{
@@ -32,7 +32,7 @@ body {
 	left: 0;
 	height: 100%;
 	width: 100%;
-	background-color:black;
+	background-color:var(--mainBlack);
 	opacity: 0.8;
 	z-index: -1;
 }
@@ -152,7 +152,7 @@ body {
 	padding: 1em;
 	width: 100%;
 }
-.recent-blogs{
+.recent-blogs, .main-blogs{
 	background-color:#FBFCFC;
 	color: var(--mainBlack);
 	padding-top: 5em;
@@ -304,8 +304,6 @@ article{
 		justify-self: flex-end;
 		margin-top: 18em;
 	}
-
-
 }
 @media(max-width: 1130px){
 	.left-schools{
@@ -317,6 +315,43 @@ article{
 	}
 }
 
+.blogs{
+	display: grid;
+	grid-template-columns: 1fr 2fr;
+	background: #FBFCFC;
+}
+.summary{
+	display: flex;
+	flex-direction: column;
+	padding: 3em;
+}
+.summary .blog{
+	margin-bottom: 2em;
+}
+.blog-header{
+	margin-bottom: 2em;
+	line-height: 2.5em;
+}
+.blog-details{
+	padding: 1em 3em;
+	border-radius: 20px;
+	background-color:#F0F3F4;
+	color: var(--mainBlack);
+}
+.bl{
+background-color: #FBFCFC;
+color: var(--mainBlack);
+}
+.main-blogs{
+	padding-top: 0;
+	height: 60%;
+	overflow: scroll;
+}
+.likes{
+	display:flex;
+	justify-content: space-evenly;
+	margin-top: 2em;
+}
 
 
 
