@@ -101,8 +101,8 @@ body {
 	font-family: 'Dancing Script', cursive;
 }
 .intro{
-	display: flex;
-	justify-content: space-between;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
 	background-color: #1B4F72;
 	opacity: 0.8;
 	color: var(--mainWhite);
@@ -142,7 +142,7 @@ body {
 	background-color: #FBFCFC;
 	border-top-left-radius: 30em;
 	width: 50%;
-	padding: 1em 10em;
+	padding: 1em 0 0 10em;
 }
 
 .education .quoting, .recent-blogs .quoting, .featured-works{
@@ -236,6 +236,85 @@ article{
 .works a{
 	text-decoration:none;
 	font-size: 1rem;
+}
+#menu{
+	display:none;
+}
+
+
+@media(max-width: 650px){
+	.last{
+		flex-direction: column;
+		text-align: center;
+	}
+	.copy{
+		margin-top: 2em;
+	}
+}
+@media(max-width: 800px){
+	.nav-list{
+		display:none;
+		flex-direction: column;
+		height: 18rem;
+		background-color: var(--headAndFoot);
+		margin-top: 17em;
+		padding: 3em;
+		width: 200px;
+	}
+	.nav-icon{
+		display:flex;
+		flex-direction: column;
+		align-items: flex-end;
+	}
+
+	.nav-list a{
+		padding-bottom: 1em;
+	}
+	.jp img{
+		width: 20em;
+		height: 20em;
+	}
+	.flex-display{
+		flex-direction: column-reverse;
+	}
+	.flex-display .quoting{
+		width: 100%;
+	}
+	.deal{
+		font-size: 0.6em;
+	}
+	.intro{
+		display: flex;
+		flex-direction: column;
+		text-align: center;
+	}
+	#menu{
+		display:inline-flex;
+	}
+	#menu:hover{
+		cursor: pointer;
+		text-align: end;
+	}
+	.nav-icon:hover .nav-list{
+		display: flex;
+		padding-top: 0;
+		margin-top: 0;
+	}
+	.nav-icon:hover{
+		justify-self: flex-end;
+		margin-top: 18em;
+	}
+
+
+}
+@media(max-width: 1130px){
+	.left-schools{
+		border-top-right-radius: 6em;
+	}
+	.right-schools{
+		border-top-left-radius: 6em;
+		padding-left: 2em;
+	}
 }
 
 
