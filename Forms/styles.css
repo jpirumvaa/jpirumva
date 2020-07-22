@@ -59,3 +59,20 @@ h2{
 	margin-top: 20px;
 	width: 100%;
 }
+@media(max-width: 1130px){
+	.log-form{
+		width: 40vw;
+	}
+}
+
+@media(max-width: 810px){
+	.log-form{
+		width: 60vw;
+	}
+}
+@media(max-width: 540px){
+	.log-form{
+		width: 80vw;
+	}
+	
+}
