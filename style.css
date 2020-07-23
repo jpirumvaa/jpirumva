@@ -20,9 +20,10 @@ body {
 }
 .container{
 	width: 100%;
+	height: 100%;
 }
 .projects-container{
-	color: black;
+	color:var(--mainBlack);
 	background-color: #ECF0F1;
 }
 .container::after{
@@ -32,7 +33,7 @@ body {
 	left: 0;
 	height: 100%;
 	width: 100%;
-	background-color:black;
+	background-color:var(--mainBlack);
 	opacity: 0.8;
 	z-index: -1;
 }
@@ -152,7 +153,7 @@ body {
 	padding: 1em;
 	width: 100%;
 }
-.recent-blogs{
+.recent-blogs, .main-blogs{
 	background-color:#FBFCFC;
 	color: var(--mainBlack);
 	padding-top: 5em;
@@ -312,9 +313,8 @@ article{
 		justify-self: flex-end;
 		margin-top: 18em;
 	}
-
-
 }
+
 @media(max-width: 1130px){
 	.left-schools{
 		border-top-right-radius: 6em;
@@ -325,6 +325,66 @@ article{
 	}
 }
 
+.blogs{
+	display: grid;
+	grid-template-columns: 1fr 2fr;
+	background-color: #F0F3F4;
+}
+@media(max-width: 890px){
+	.blogs{
+		display: flex;
+		flex-direction: column;
+	}
+	.blog{
+		width: 60%;
+		margin: 0 auto;
+	}
+}
+.summary{
+	display: flex;
+	flex-direction: column;
+	padding: 3em;
+	background-color: #FBFCFC;
+}
+.summary .blog{
+	margin-bottom: 2em;
+}
+.blog-header{
+	margin-bottom: 2em;
+	line-height: 2.5em;
+}
+.blog-details{
+	padding: 1em 3em;
+	border-radius: 20px;
+	background-color:#F0F3F4;
+	color: var(--mainBlack);
+}
+.bl{
+	background-color: #FBFCFC;
+	color: var(--mainBlack);
+}
+.main-blogs{
+	background-color:#F0F3F4;
+	padding-top: 0;
+	height: 60%;
+	overflow: scroll;
+}
+.likes{
+	display:flex;
+	justify-content: space-evenly;
+	margin-top: 2em;
+}
+.comments{
+	margin-top:3em;
+}
+.comment{
+	margin-top: 2em;
+}
+textarea{
+	height: 100px;
+	width: 70%;
+	padding: 10px;
+}
 .form h2{
 	text-align: center;
 	margin: 0 0 20px;
@@ -361,6 +421,9 @@ article{
 }
 
 .form button{
+	width: 100%;
+}
+.form button, .btn{
 	cursor: pointer;
 	background-color: #3498db;
 	border: 2px solid #3498db;
@@ -370,8 +433,14 @@ article{
 	font-size: 16px;
 	padding: 10px;
 	margin-top: 20px;
-	width: 100%;
 }
+.btn{
+	width: 30%;
+	margin-left: 1em;
+	
+	}
+
+
 @media(max-width: 1130px){
 	.log-form{
 		width: 40vw;
@@ -390,6 +459,10 @@ article{
 	
 }
 /*-------------------------End of Forms styles-----------------------*/
+
+
+
+
 
 
 
