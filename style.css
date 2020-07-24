@@ -1,12 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
 :root {
-	--primaryColor: #f09d51;
+	--primaryColor: #FBFCFC;
 	--mainWhite: #fff;
 	--mainBlack: #000;
-	--mainGrey: #ececec;
 	--headAndFoot: #17202A ;
-	--mainSpacing: 0.1rem;
 	--mainTransition: all 0.3s linear;
 }
 * {
@@ -65,7 +63,7 @@ body {
 }
 .navbar a:hover{
 	font-size: 1.3em;
-	color: #FBFCFC;
+	color: var(--primaryColor);
 }
 .bg{
 	height: 38em;
@@ -134,27 +132,27 @@ body {
 	color: var(--mainBlack);
 }
 .left-schools{
-	background-color: #FBFCFC;
+	background-color: var(--primaryColor);
 	border-top-right-radius: 30em;
 	width:50%;
 	padding: 1em;
 }
 .right-schools{
-	background-color: #FBFCFC;
+	background-color: var(--primaryColor);
 	border-top-left-radius: 30em;
 	width: 50%;
 	padding: 1em 0 0 10em;
 }
 
 .education .quoting, .recent-blogs .quoting, .featured-works{
-	background-color: #FBFCFC;
+	background-color: var(--primaryColor);
 	color: var(--mainBlack);
 	margin: 0;
 	padding: 1em;
 	width: 100%;
 }
 .recent-blogs, .main-blogs{
-	background-color:#FBFCFC;
+	background-color:var(--primaryColor);
 	color: var(--mainBlack);
 	padding-top: 5em;
 }
@@ -344,7 +342,7 @@ article{
 	display: flex;
 	flex-direction: column;
 	padding: 3em;
-	background-color: #FBFCFC;
+	background-color: var(--primaryColor);
 }
 .summary .blog{
 	margin-bottom: 2em;
@@ -360,7 +358,7 @@ article{
 	color: var(--mainBlack);
 }
 .bl{
-	background-color: #FBFCFC;
+	background-color: var(--primaryColor);
 	color: var(--mainBlack);
 }
 .main-blogs{
