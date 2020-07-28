@@ -66,7 +66,6 @@ displayHomeProjects(projects){
 
 document.addEventListener("DOMContentLoaded", ()=>{
     const ui= new UI()
-    const projectsui= new ProjectsUI()
     const projects= new Projects()
     projects.getProjects().then(projects=>ui.displayProjects(projects))
     projects.getProjects().then(projects=>ui.displayHomeProjects(projects))
