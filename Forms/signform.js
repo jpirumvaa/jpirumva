@@ -5,6 +5,8 @@ const password = document.querySelector('.password');
 const password2 = document.querySelector('.password2');
 
 
+
+
 function showError(input, message) {
   const formControl = input.parentElement;
   formControl.className = 'form-control error';
@@ -65,7 +67,7 @@ function getFieldName(input) {
 
 form.addEventListener('submit', function(e) {
   e.preventDefault();
-  checkRequired([username, password, password2,email]);
+  checkRequired([username, password, password2, email]);
   checkLength(username, 5, 15);
   checkLength(password, 6, 25);
   checkEmail(email);
