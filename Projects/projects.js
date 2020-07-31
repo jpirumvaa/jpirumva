@@ -1,22 +1,19 @@
-let projectsDOM= document.querySelector(".domworks")
-let featuredWorksDOM= document.querySelector(".featured-activities")
+const projectsDOM= document.querySelector(".domworks")
+const featuredWorksDOM= document.querySelector(".featured-activities")
+const projFooter= document.querySelector('.cont-footer')
 
-
-
-class Projects{
-async getProjects(){
+async function getProjects(){
     try{
         let results = await fetch('../Projects/projects.json')
         let data= await results.json()
         let projects= data.items
-        console.log(projects)
         return projects
     }catch(error){
         console.log(error)
     }
     
 }
-}
+
 
 class UI{
 displayProjects(projects){
@@ -37,7 +34,7 @@ displayProjects(projects){
         </article>
 `
     })
-    projectsDOM.innerHTML=results
+    projectsDOM.innerHTML=results  
 }
 displayHomeProjects(projects){
     let homeResults="" 
@@ -57,7 +54,6 @@ displayHomeProjects(projects){
         </article>
 `
     })
-    console.log(homeResults)
     featuredWorksDOM.innerHTML=homeResults
 }
 
@@ -66,7 +62,6 @@ displayHomeProjects(projects){
 
 document.addEventListener("DOMContentLoaded", ()=>{
     const ui= new UI()
-    const projects= new Projects()
-    projects.getProjects().then(projects=>ui.displayProjects(projects))
-    projects.getProjects().then(projects=>ui.displayHomeProjects(projects))
+    getProjects().then(projects=>ui.displayProjects(projects))
+    getProjects().then(projects=>ui.displayHomeProjects(projects))
 })
