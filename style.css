@@ -73,6 +73,9 @@ body {
 	position: fixed;
 	z-index: -1;
 }
+#logout{
+	display:none;
+}
 
 .flex-display{
 	display: flex;
