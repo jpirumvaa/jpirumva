@@ -21,7 +21,7 @@ signupForm.addEventListener('submit', function(e) {
         console.log(userInfo)
         signupForm.reset()
         loginBtn.style.display= 'none'
-        logoutBtn.style.display="block"
+        logoutBtn.style.display="inline-block"
         //window.location="../index.html"
     }).catch((e)=>{
         console.log("Not able to post information")
