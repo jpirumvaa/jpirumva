@@ -22,7 +22,7 @@ signupForm.addEventListener('submit', function(e) {
         signupForm.reset()
         loginBtn.style.display= 'none'
         logoutBtn.style.display="inline-block"
-        //window.location="../index.html"
+        window.location="../index.html"
     }).catch((e)=>{
         console.log("Not able to post information")
         alert("Your information was not saved. If you are sure that you have filled the correct information,check your connection and try again later")

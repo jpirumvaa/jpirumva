@@ -444,7 +444,7 @@ textarea{
 .form button{
 	width: 100%;
 }
-.form button, .btn{
+.form button, .btn, .prof{
 	cursor: pointer;
 	background-color: #3498db;
 	border: 2px solid #3498db;
@@ -460,6 +460,7 @@ textarea{
 	margin-left: 1em;
 	
 }
+
 .admin-intro .btn{
 	margin: 0 auto;
 }
@@ -525,5 +526,19 @@ tr:nth-child(even) {
 .admin-form{
 	width: 60%;
 	margin: 0 auto;
+	display: none;
+}
+
+/*user profile*/
+#user-form{
+	width: 60%;
+	margin: 2em auto;
+}
+.user-intro{
+	color: black;
+}
+
+
+.actions{
 	display: none;
 }
