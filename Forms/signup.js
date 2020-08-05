@@ -18,7 +18,6 @@ signupForm.addEventListener('submit', function(e) {
     const emailAddress= email.value
     pass===secondPass?
     auth.createUserWithEmailAndPassword(emailAddress, pass).then(userInfo=>{
-        console.log(userInfo)
         signupForm.reset()
         loginBtn.style.display= 'none'
         logoutBtn.style.display="inline-block"
