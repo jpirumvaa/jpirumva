@@ -542,3 +542,12 @@ tr:nth-child(even) {
 .actions{
 	display: block;
 }
+.blog-body{
+	white-space: pre-wrap;
+	text-align: justify;
+}
+.blog-avatar{
+	width: 100%;
+	border-radius: 5%;
+	margin-top: 1em;
+}
