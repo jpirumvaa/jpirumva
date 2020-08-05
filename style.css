@@ -540,5 +540,5 @@ tr:nth-child(even) {
 
 
 .actions{
-	display: none;
+	display: block;
 }
