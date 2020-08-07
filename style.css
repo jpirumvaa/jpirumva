@@ -230,6 +230,9 @@ body {
 article{
 	margin-bottom: 3em;
 }
+.article-title{
+	width: 50%;
+}
 .works-intro{
 	text-align: center;
 	margin: 1rem 0 3rem 0;
@@ -386,7 +389,7 @@ article{
 .main-blogs{
 	background-color:#F0F3F4;
 	padding-top: 0;
-	height: 60%;
+	height: 600px;
 	overflow: scroll;
 }
 .likes{

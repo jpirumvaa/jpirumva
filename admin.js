@@ -8,12 +8,13 @@ const author= document.querySelector(".author")
 const title=document.querySelector(".article-title")
 const articleBody= document.querySelector(".article-body")
 const articlesPart= document.querySelector('.articles-part')
+const realArticles= document.querySelector('.arti')
 
 const setupMessages= (data)=>{
     let messageUI= `<h2 class="center">Messages</h2>`
     data.forEach(item=>{
         const message= item.data()
-        console.log(message)
+        
         if(message!=undefined){
             const mess=`
             <div class="message">
@@ -48,8 +49,52 @@ db.collection('messages').get().then(info=>{
 })
 
 var today = new Date();
-var date = `${today.getDate()}/${(today.getMonth()+1)}/${today.getFullYear()}`;
+let month= today.getMonth()
+let realMonth;
+switch (month) {
+    case 0:
+        realMonth="January"        
+        break;
+    case 1:
+        realMonth= "February"
+        break;
+    case 2:
+        realMonth="March"        
+        break;
+    case 3:
+        realMonth= "April"
+        break;
+    case 4:
+        realMonth="May"        
+        break;
+    case 5:
+        realMonth= "June"
+        break;
+    case 6:
+        realMonth="July"        
+        break;
+    case 7:
+        realMonth= "August"
+        break;
+    case 8:
+        realMonth="September"        
+        break;
+    case 9:
+        realMonth= "October"
+        break;
+    case 10:
+        realMonth="November"        
+        break;
+    case 11:
+        realMonth= "December"
+        break;
+    default:
+        realMonth= "N/M"
+        break;
+}
+var date = `${realMonth} ${today.getDate()}, ${today.getFullYear()}`;
 var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+
 var dateTime=`${date} ${time}`
 
 addForm.addEventListener('submit', function(e){
@@ -65,12 +110,19 @@ addForm.addEventListener('submit', function(e){
         }).then(()=>{
             alert("Thank you for submitting your form.")
             addForm.reset()
+        }).then(()=>{
+            articlesPart.innerHTML=""
+            db.collection('articles').get().then(info=>{
+            setupArticles(info.docs)
+        })
         }).catch((e)=>console.log(e))
 
 })
 
 
 const setupArticles= (data)=>{
+    let header= document.createElement('tr')
+    header.setAttribute('class', "title")
     let articleUI=`                    
     <tr class="title">
         <th>Article Name</th>
@@ -78,23 +130,52 @@ const setupArticles= (data)=>{
         <th>Edit Blog</th>
         <th>Delete</th>
     </tr>`;
+    header.innerHTML= articleUI
+    console.log(header)
+    articlesPart.appendChild(header)
     data.forEach(item=>{
         const article= item.data()
+        const articleId= item.id
         if(article!=undefined){
+            let tr= document.createElement('tr')
+            tr.setAttribute('data-id', articleId)
+
+            
             const art=`
-                <tr>
-                    <td>${article.title}</td>
+                    <td class="article-title">${article.title}</td>
                     <td>${article.date}</td>
                     <td class="center"><img src="https://img.icons8.com/pastel-glyph/30/000000/edit.png"/></td>
-                    <td class="center"><img src="https://img.icons8.com/color/30/000000/delete-forever.png"/></td>
-                </tr> 
+                    <td class="center"><img onclick= deleteItem(${articleId})  id="${articleId}" class="delete"  src="https://img.icons8.com/color/30/000000/delete-forever.png"/></td>
             `
-            articleUI+=art
+            tr.innerHTML=art
+            console.log(tr)
+            articlesPart.appendChild(tr)
+            //articleUI+=`${tr}`
+            //tr.setAttribute('data-id', articleId)
         }
 
-
     })
-    articlesPart.innerHTML= articleUI
+
+    /*
+    const deleteBtn= document.querySelector('.delete')
+    deleteBtn.addEventListener('click', (e)=>{
+        e.stopPropagation()
+        let id= e.target.getAttribute('id')
+        console.log(e.currentTarget)
+        //
+    })
+    //articlesPart.innerHTML= articleUI
+    */
+}
+
+function deleteItem(e){
+    let id= e.getAttribute('id')
+    db.collection('articles').doc(id).delete()
+    articlesPart.innerHTML=""
+    db.collection('articles').get().then(info=>{
+    setupArticles(info.docs)
+    })
+    console.log(id)
 }
 
 db.collection('articles').get().then(info=>{
