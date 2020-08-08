@@ -44,6 +44,9 @@ avatar.onchange= e =>{
 
 db.collection('messages').get().then(info=>{
     setupMessages(info.docs)
+}).catch((e)=>{
+    alert("Unable to retrieve data. Please, check your network and try again.")
+    console.log(e)
 })
 
 var today = new Date();
@@ -135,7 +138,7 @@ addForm.addEventListener('submit', function(e){
             likes:[],
             comments:[],
             date: dateTime,
-            dateofPublication: publicationTime
+            timeOfPublication: publicationTime
         }).then(()=>{
             alert("Thank you for submitting your form.")
             addForm.reset()
@@ -161,9 +164,24 @@ const setupArticles= (data)=>{
     </tr>`;
     header.innerHTML= articleUI
     articlesPart.appendChild(header)
+    let articlesArray= []
+    let sortedArticles=[]
+    let articleIds=[];
+
     data.forEach(item=>{
         const article= item.data()
-        const articleId= item.id
+        articleIds.push(item.id)
+        articlesArray.push(article)
+        sortedArticles= articlesArray.sort((a,b)=>a.timeOfPublication - b.timeOfPublication)
+        //console.log(article)
+    })
+    console.log(articleIds)
+
+    sortedArticles.map(article=>{
+        let articleId;
+        articleIds.map(id=>{
+            articleId= id
+        })
         if(article!=undefined){
             let tr= document.createElement('tr')
             tr.setAttribute('data-id', articleId)
@@ -178,7 +196,6 @@ const setupArticles= (data)=>{
             tr.innerHTML=art
             articlesPart.appendChild(tr)
         }
-
     })
 }
 
@@ -194,4 +211,7 @@ function deleteItem(e){
 
 db.collection('articles').get().then(info=>{
     setupArticles(info.docs)
+}).catch((e)=>{
+    alert("Unable to retrieve data. Please, check your network and try again.")
+    console.log(e)
 })
