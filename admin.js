@@ -92,7 +92,35 @@ switch (month) {
         realMonth= "N/M"
         break;
 }
-var date = `${realMonth} ${today.getDate()}, ${today.getFullYear()}`;
+let day= today.getDay()
+let realDay;
+switch (day) {
+    case 0:
+        realDay="Sunday"        
+        break;
+    case 1:
+        realDay= "Monday"
+        break;
+    case 2:
+        realDay="Tuesday"        
+        break;
+    case 3:
+        realDay= "Wednesday"
+        break;
+    case 4:
+        realDay="Thursday"        
+        break;
+    case 5:
+        realDay= "Friday"
+        break;
+    case 6:
+        realDay="Saturday"        
+        break;
+    default:
+        realDay= "N/D"
+        break;
+}
+var date = `${realDay}, ${realMonth} ${today.getDate()}, ${today.getFullYear()}`;
 var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
 
 var dateTime=`${date} ${time}`
@@ -148,24 +176,10 @@ const setupArticles= (data)=>{
                     <td class="center"><img onclick= deleteItem(${articleId})  id="${articleId}" class="delete"  src="https://img.icons8.com/color/30/000000/delete-forever.png"/></td>
             `
             tr.innerHTML=art
-            console.log(tr)
             articlesPart.appendChild(tr)
-            //articleUI+=`${tr}`
-            //tr.setAttribute('data-id', articleId)
         }
 
     })
-
-    /*
-    const deleteBtn= document.querySelector('.delete')
-    deleteBtn.addEventListener('click', (e)=>{
-        e.stopPropagation()
-        let id= e.target.getAttribute('id')
-        console.log(e.currentTarget)
-        //
-    })
-    //articlesPart.innerHTML= articleUI
-    */
 }
 
 function deleteItem(e){
