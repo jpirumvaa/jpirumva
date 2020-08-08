@@ -1,6 +1,7 @@
 const messages= document.querySelector(".messages")
 const avatar= document.querySelector(".avatar")
 const addForm= document.querySelector(".admin")
+const adminAdd=document.querySelector('.admin-form')
 var reader;
 var files=[];
 var imageURLs=[]
@@ -172,7 +173,7 @@ const setupArticles= (data)=>{
             const art=`
                     <td class="article-title">${article.title}</td>
                     <td>${article.date}</td>
-                    <td class="center"><img src="https://img.icons8.com/pastel-glyph/30/000000/edit.png"/></td>
+                    <td class="center"><img onclick= editItem(${articleId}) src="https://img.icons8.com/pastel-glyph/30/000000/edit.png"/></td>
                     <td class="center"><img onclick= deleteItem(${articleId})  id="${articleId}" class="delete"  src="https://img.icons8.com/color/30/000000/delete-forever.png"/></td>
             `
             tr.innerHTML=art
@@ -189,6 +190,33 @@ function deleteItem(e){
     db.collection('articles').get().then(info=>{
     setupArticles(info.docs)
     })
+}
+
+
+
+const editArticle= (data)=>{
+
+    adminAdd.style.display='block'
+    let article= data.data()
+    author.value= article.author
+    title.value= article.title
+    avatar.src= article.avatarURL
+    articleBody.value= article.body
+
+}
+
+
+
+function editItem(e){
+    let id= e.getAttribute('id')
+    let articleId;
+
+    //db.collection('articles').doc(id).delete()
+    //articlesPart.innerHTML=""
+    db.collection('articles').doc(id).get().then(info=>{
+        editArticle(info)    
+    })
+
     console.log(id)
 }
 
