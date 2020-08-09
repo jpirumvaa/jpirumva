@@ -241,8 +241,6 @@ function editItem(e){
     db.collection('articles').doc(id).get().then(info=>{
         editArticle(info)    
     })
-
-    //console.log(id)
 }
 
 db.collection('articles').get().then(info=>{
