@@ -1,13 +1,21 @@
 const messages= document.querySelector(".messages")
-const avatar= document.querySelector(".avatar")
 const addForm= document.querySelector(".admin")
 const adminAdd=document.querySelector('.admin-form')
+const adminUpdate= document.querySelector('.update-form')
+const updateForm= document.querySelector('.update')
 var reader;
 var files=[];
 var imageURLs=[]
+const avatar= document.querySelector(".avatar")
 const author= document.querySelector(".author")
 const title=document.querySelector(".article-title")
 const articleBody= document.querySelector(".article-body")
+
+const updateAuthor= document.querySelector(".update-author")
+const updateTitle=document.querySelector(".update-article-title")
+const updateArticleBody= document.querySelector(".update-article-body")
+const updateAvatar= document.querySelector(".update-avatar")
+
 const articlesPart= document.querySelector('.articles-part')
 const realArticles= document.querySelector('.arti')
 
@@ -127,7 +135,8 @@ console.log(publicationTime)
 var dateTime=`${date} ${time}`
 
 addForm.addEventListener('submit', function(e){
-    e.preventDefault() 
+    e.preventDefault()
+    
         db.collection('articles').add({
             title: title.value,
             author: author.value,
@@ -173,7 +182,7 @@ const setupArticles= (data)=>{
             const art=`
                     <td class="article-title">${article.title}</td>
                     <td>${article.date}</td>
-                    <td class="center"><img onclick= editItem(${articleId}) src="https://img.icons8.com/pastel-glyph/30/000000/edit.png"/></td>
+                    <td class="center"><img onclick= editItem(${articleId}) class= "edit" src="https://img.icons8.com/pastel-glyph/30/000000/edit.png"/></td>
                     <td class="center"><img onclick= deleteItem(${articleId})  id="${articleId}" class="delete"  src="https://img.icons8.com/color/30/000000/delete-forever.png"/></td>
             `
             tr.innerHTML=art
@@ -185,23 +194,43 @@ const setupArticles= (data)=>{
 
 function deleteItem(e){
     let id= e.getAttribute('id')
-    db.collection('articles').doc(id).delete()
-    articlesPart.innerHTML=""
-    db.collection('articles').get().then(info=>{
-    setupArticles(info.docs)
+    db.collection('articles').doc(id).delete().then(()=>{
+        articlesPart.innerHTML=""
+        db.collection('articles').get().then(info=>{
+        setupArticles(info.docs)
+        })    
     })
+
 }
 
 
 
 const editArticle= (data)=>{
-
-    adminAdd.style.display='block'
+    adminUpdate.style.display='block'
     let article= data.data()
-    author.value= article.author
-    title.value= article.title
-    avatar.src= article.avatarURL
-    articleBody.value= article.body
+    let id= data.id
+    updateAuthor.value= article.author
+    updateTitle.value= article.title
+    updateAvatar.src= article.avatarURL
+    updateArticleBody.value= article.body
+    updateForm.addEventListener('submit',(e)=>{
+        e.preventDefault()
+        adminAdd.style.display='none'
+        db.collection('articles').doc(id).update({
+            author:updateAuthor.value,
+            body: updateArticleBody.value,
+            avatarURL: updateAvatar.src,
+            title: updateTitle.value,
+            comments: [],
+            likes: [],
+        }).then(()=>alert("Updated Successfully")).then(()=>{
+            updateForm.reset()
+            articlesPart.innerHTML=""
+            db.collection('articles').get().then(info=>{
+            setupArticles(info.docs)
+            })
+        }).catch((e)=>alert("An error occured. Please, try again"))
+    })
 
 }
 
@@ -217,7 +246,7 @@ function editItem(e){
         editArticle(info)    
     })
 
-    console.log(id)
+    //console.log(id)
 }
 
 db.collection('articles').get().then(info=>{

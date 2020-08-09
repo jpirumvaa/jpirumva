@@ -526,7 +526,7 @@ td, th{
 tr:nth-child(even) {
 	background-color: #f2f2f2;
 }
-.admin-form{
+.admin-form, .update-form{
 	width: 60%;
 	margin: 0 auto;
 	display: none;
@@ -553,4 +553,8 @@ tr:nth-child(even) {
 	width: 100%;
 	border-radius: 5%;
 	margin-top: 1em;
+}
+
+.edit:hover, .delete:hover{
+	cursor: pointer;
 }

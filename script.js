@@ -11,4 +11,7 @@ if(authedUser !=='admininstrator'){
 function showHide(ele){
     ele.style.display= ele.style.display=="block"?"none":"block"
 }
-addBtn.addEventListener('click', ()=>showHide(adminForm))
+addBtn.addEventListener('click', ()=>{
+    showHide(adminForm)
+    adminUpdate.style.display= 'none'
+})
