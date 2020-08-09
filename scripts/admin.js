@@ -1,5 +1,5 @@
 const messages= document.querySelector(".messages")
-const addForm= document.querySelector(".admin")
+const addForm= document.querySelector(".admin-f")
 const adminAdd=document.querySelector('.admin-form')
 const adminUpdate= document.querySelector('.update-form')
 const updateForm= document.querySelector('.update')
@@ -134,8 +134,7 @@ let publicationTime= today.getTime()
 var dateTime=`${date} ${time}`
 
 addForm.addEventListener('submit', function(e){
-    e.preventDefault()
-    
+    e.preventDefault()    
         db.collection('articles').add({
             title: title.value,
             author: author.value,
