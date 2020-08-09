@@ -558,3 +558,6 @@ tr:nth-child(even) {
 .edit:hover, .delete:hover{
 	cursor: pointer;
 }
+.c-btn{
+	width: 70%;
+}

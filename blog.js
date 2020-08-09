@@ -4,10 +4,10 @@ const commentsPart= document.querySelector('.comments')
 
 
 
-const setupBlog= (data)=>{
+const setupBlog= (data, id)=>{
     let blogUI="";
-    const blog= data[1].data() 
-    const blogId= data[1].id       
+    const blog= data.data() 
+    const blogId= id      
         if(blog!=undefined){
             const bl=`
             <div class="blog-header">
@@ -54,6 +54,9 @@ commentForm.addEventListener('submit',(e)=>{
         commentingTo: blogId
     }).then(()=>{
         commentForm.reset()
+        db.collection('comments').get().then(info=>{
+            setupComments(info.docs)
+        })
     }).catch((e)=>console.log(e))
 })
 
@@ -83,77 +86,6 @@ db.collection('comments').get().then(info=>{
     setupComments(info.docs)
 })
 
-    /*
-const addComment=(data)=>{
-
-
-
-
-}
-
-
-const setupComments= (data)=>{
-    let commentsUI= `<h2 class="center">Messages</h2>`
-    data.forEach(item=>{
-        const message= item.data()
-        
-        if(message!=undefined){
-            const mess=`
-            <div class="message">
-                <h4>${message.name}</h4>
-                <p>${message.message}</p>
-            </div>
-            <hr/>
-            `
-            messageUI+=mess
-        }
-
-    })
-    messages.innerHTML= messageUI
-}
-*/
-  /*
-commentForm.addEventListener('submit', (e)=>{
-    e.preventDefault()
-  
-    const editArticle= (data)=>{
-    let article= data.data()
-    let id= data.id
-    updateAuthor.value= article.author
-    updateTitle.value= article.title
-    updateAvatar.src= article.avatarURL
-    updateArticleBody.value= article.body
-    updateForm.addEventListener('submit',(e)=>{
-        e.preventDefault()
-        adminAdd.style.display='none'
-        db.collection('articles').doc(id).update({
-            author:updateAuthor.value,
-            body: updateArticleBody.value,
-            avatarURL: updateAvatar.src,
-            title: updateTitle.value,
-            comments: [],
-            likes: [],
-        }).then(()=>alert("Updated Successfully")).then(()=>{
-            updateForm.reset()
-            articlesPart.innerHTML=""
-            db.collection('articles').get().then(info=>{
-            setupArticles(info.docs)
-            })
-        }).catch((e)=>alert("An error occured. Please, try again"))
-    })
-
-}
-
-function editItem(e){
-    let id= e.getAttribute('id')
-    db.collection('articles').doc(id).get().then(info=>{
-        editArticle(info)    
-    })
-}
-    
-    console.log(comment.value)
-})
-*/
 }   
 
 
@@ -164,11 +96,13 @@ const setupBlogSummary= (data)=>{
     let blogSummaryUI="";
     data.forEach(item=>{
         const blogSummary= item.data()
+        console.log(blogSummary)
+        const blogId= item.id
         if(blogSummary!=undefined){
             const blSummary=`
                 <div class="blog">
                     <h3>${blogSummary.title}</h3>
-                    <p>${blogSummary.body.slice(0, 300)}.......<a href="#">Continue Reading</a></p>
+                    <p>${blogSummary.body.slice(0, 300)}.......<button class='btn c-btn' onclick="generateId(${blogId})" id=${blogId}>Continue Reading</button></p>
                     <div class="likes">
                         <div>
                             <img src="https://img.icons8.com/carbon-copy/20/000000/like--v1.png"/>
@@ -189,8 +123,15 @@ const setupBlogSummary= (data)=>{
     summary.innerHTML= blogSummaryUI
 }
 
-db.collection('articles').get().then(info=>{
-    setupBlog(info.docs)
+const generateId =(e)=>{
+    let id= e.getAttribute('id')
+    db.collection('articles').doc(id).get().then(info=>{
+        console.log(info)
+        setupBlog(info, id)
+    })
+}
+
+db.collection('articles').get().then(info=>{    
     setupBlogSummary(info.docs)
 }).catch((e)=>{
     alert("Unable to retrieve data. Please, check your network and try again.")
