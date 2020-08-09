@@ -2,6 +2,7 @@ const featuredWorksDOM= document.querySelector(".featured-activities")
 const summary= document.querySelector(".blog-summary")
 
 
+
 const displayHomeProjects= (projects)=>{    
     let homeResults="" 
 

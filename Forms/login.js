@@ -8,15 +8,20 @@ const logoBtn= document.querySelector('#logoutBtn')
 
 auth.onAuthStateChanged(user=>{
   if(user){
-      console.log("Hello from user:", user)
+      console.log("Hello from user:", user.uid)
+      db.collection('users').doc(user.uid).get().then(info=>{
+        if(info.data().isAdmin===true){
+
+        }
+      })
       logoBtn.style.display="inline-block"
       logBtn.style.display= 'none'
   }else{
     logoBtn.style.display="none"
     logBtn.style.display= 'inline-block'
   }
-
 })
+
 logForm.addEventListener('submit', function(e){
   e.preventDefault()
   checkRequired([logEmail, logPassword])
@@ -31,11 +36,4 @@ logForm.addEventListener('submit', function(e){
     console.log(e)
     alert("Either Email or password is incorrect. Check your input and try again.")
 })
-})
-logoBtn.addEventListener('click',(e)=>{
-  e.preventDefault()
-  auth.signOut().then(()=>{
-      window.location='login.html'
-      console.log("Signed Out successfully")
-  })
 })
