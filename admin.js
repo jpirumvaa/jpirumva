@@ -238,10 +238,6 @@ const editArticle= (data)=>{
 
 function editItem(e){
     let id= e.getAttribute('id')
-    let articleId;
-
-    //db.collection('articles').doc(id).delete()
-    //articlesPart.innerHTML=""
     db.collection('articles').doc(id).get().then(info=>{
         editArticle(info)    
     })
