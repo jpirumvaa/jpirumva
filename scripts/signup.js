@@ -44,7 +44,7 @@ signupForm.addEventListener('submit', function(e) {
         signupForm.reset()
         loginBtn.style.display= 'none'
         logoutBtn.style.display="inline-block"
-        window.location="../index.html"
+        window.location="../pages/index.html"
     }).catch((e)=>{
         console.log("Not able to post information")
         alert("Your information was not saved. If you are sure that you have filled the correct information,check your connection and try again later")
@@ -65,7 +65,7 @@ signupForm.addEventListener('submit', function(e) {
 logoutBtn.addEventListener('click',(e)=>{
     e.preventDefault()
     auth.signOut().then(()=>{
-        window.location='login.html'
+        window.location='../pages/login.html'
         console.log("Signed Out successfully")
     })
 })

@@ -27,13 +27,14 @@ var firebaseConfig = {
             logBtn.style.display= 'none'
             
           }else{
-            admin.style.display= 'none'           
+            admin.style.display= 'none' 
+            logoBtn.style.display="inline-block" 
+            logBtn.style.display= 'none'         
             
           }
         })
 
     }else{
-      window.location="../pages/login.html"
       logoBtn.style.display="none"
       admin.style.display= 'none' 
       logBtn.style.display= 'inline-block'
