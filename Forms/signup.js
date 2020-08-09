@@ -16,8 +16,31 @@ signupForm.addEventListener('submit', function(e) {
     const pass= password.value
     const secondPass= password2.value
     const emailAddress= email.value
+    let lat;
+    let long;
+    if('geolocation' in navigator){
+        console.log("Location available")
+        navigator.geolocation.getCurrentPosition(position=>{
+            lat= position.coords.latitude
+            long= position.coords.longitude
+        })
+    }else{
+    console.log("geolocation services not available")
+    }
+    console.log(lat, long)
     pass===secondPass?
     auth.createUserWithEmailAndPassword(emailAddress, pass).then(userInfo=>{
+        return db.collection('users').doc(userInfo.user.uid).set({
+            name: name,
+            password: pass,
+            email: emailAddress,
+            isAdmin: false,
+            location:{
+                latutude: lat!=='underfined'?lat:'Location Dinied',
+                longitude: long!=='underfined'?long:'Location Dinied',
+            }
+        })
+    }).then(()=>{
         signupForm.reset()
         loginBtn.style.display= 'none'
         logoutBtn.style.display="inline-block"
@@ -47,7 +70,3 @@ logoutBtn.addEventListener('click',(e)=>{
     })
 })
 
-
-
-//console.log(user)
-//ref.push(projects)

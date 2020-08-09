@@ -130,7 +130,6 @@ switch (day) {
 var date = `${realDay}, ${realMonth} ${today.getDate()}, ${today.getFullYear()}`;
 var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
 let publicationTime= today.getTime()
-console.log(publicationTime)
 
 var dateTime=`${date} ${time}`
 

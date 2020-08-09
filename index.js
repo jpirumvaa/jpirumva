@@ -38,7 +38,7 @@ const setupBlogSummary= (data)=>{
 
             <div class="blog">
                 <h2>${blogSummary.title}</h2>
-                <p>${blogSummary.body.slice(0, 300)}.......<a href="#">Continue Reading</a></p>
+                <p>${blogSummary.body.slice(0, 300)}.......<a href="./blog.html">Continue Reading</a></p>
             </div>
             `
             blogSummaryUI+=blSummary

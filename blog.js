@@ -5,7 +5,7 @@ const commentsPart= document.querySelector('.comments')
 
 
 const setupBlog= (data, id)=>{
-    let blogUI="";
+    let blogUI="<h2>Select your blog to get started</h2>";
     const blog= data.data() 
     const blogId= id      
         if(blog!=undefined){
@@ -39,6 +39,12 @@ const setupBlog= (data, id)=>{
             </div>
             `
             blogUI+=bl
+        }else{
+            const nbl=`
+            <div>
+                
+            </div>`
+            blogUI+=nbl
         }
     blogPart.innerHTML= blogUI
 
