@@ -25,6 +25,7 @@ var firebaseConfig = {
             admin.style.display='inline-block'
             logoBtn.style.display="inline-block"
             logBtn.style.display= 'none'
+            
           }else{
             admin.style.display= 'none'           
             
@@ -32,7 +33,9 @@ var firebaseConfig = {
         })
 
     }else{
+      window.location="../pages/login.html"
       logoBtn.style.display="none"
+      admin.style.display= 'none' 
       logBtn.style.display= 'inline-block'
     }
   })
@@ -40,7 +43,7 @@ var firebaseConfig = {
   logoBtn.addEventListener('click',(e)=>{
     e.preventDefault()
     auth.signOut().then(()=>{
-        window.location="./Forms/login.html"
+        window.location="../pages/login.html"
         console.log("Signed Out successfully")
     })
   })

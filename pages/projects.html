@@ -1,49 +1,37 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<link href="style.css" rel="stylesheet">
-		<title>Blog</title>
+		<link href="../style.css" rel="stylesheet">
+		<title>Jean Pierre Imanirumva</title>
 	</head>
 	<body>
-	<div class="container">
+	<div class="projects-container">
 		<nav class='navbar'>
 			<a href="https://github.com/jpirumvaa" target="_blank" class="git"><img src="https://img.icons8.com/fluent/48/000000/github.png"/>View on Github</a>
 			<span class="nav-icon">
 				<img id="menu" src="https://img.icons8.com/fluent/48/000000/menu--v1.png"/>
 				<div class="nav-list">
-					<a href="index.html">Home</a>
-					<a href="Projects/projects.html">Projects</a>
-					<a href="Forms/contact.html">Contact</a>
-					<a href="#">Blog</a>
-					<a href="Forms/login.html">Log In</a>
-					<a class="admin" href="admin.html"><img src="https://img.icons8.com/color/40/000000/admin-settings-male.png"/></a>
+					<a href="./index.html">Home</a>
+					<a href="./projects.html">Projects</a>
+					<a href="../contact.html">Contact</a>
+					<a href="./blog.html">Blog</a>
+					<a class="logbtn" href="./login.html">Log In</a>
+					<a href="" id="logoutBtn">Logout</a>
+					<a class="admin" href="./admin.html"><img src="https://img.icons8.com/color/40/000000/admin-settings-male.png"/></a>
 				</div>
 			</span>
 
-		</nav>		
-		<main>
-			<h1 class="center bl">Blogs</h1>
-			<div class="blogs">				
-				<div class="main-blogs">
-					<h2 class="center">Blog Posts</h2>
-					<div class="summary"></div>
-				</div>
-				<div class="blog-details">
-					<div class="blog-d">
-
-					</div>
-
-
-					<div class="comments">
-					</div>
-				</div>
-
+		</nav>
+		<div class="works-part">
+			<div class='works-intro'>
+				<h1>Works</h1>
+				<p>Here are some of my works:</p>
 			</div>
-			
-		</main>
+			<div class="works domworks"></div>
+		</div>
 		
 		<footer class="foot">
-			<div class="last">
+			<div class="last cont-footer">
 				<div class="social-links">
 					<p>Connect:</p><br>
 					<a class="face" target="_blank" href="https://www.facebook.com/jeanpierre.imanirumva"><img src="https://img.icons8.com/fluent/48/000000/facebook-new.png"/></a>
@@ -57,15 +45,13 @@
 					&copyCopyright 2020, Jean Pierre Imanirumva
 				</div>			
 			</div>	
-		</footer>
-	
+		</footer>	
 	</div>
-
 	<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
-    <script src="./fire.js"></script>
-    <script src="./blog.js"></script>
+    <script src="../scripts/fire.js"></script>
+	<script src="../scripts/projects.js"></script>
 	</body>
 
 </html>

@@ -30,7 +30,7 @@ logForm.addEventListener('submit', function(e){
   auth.signInWithEmailAndPassword(userEmail, userPassword).then(userInfo=>{
     console.log(userInfo.user)
     logForm.reset()
-    window.location="../index.html"
+    window.location="../pages/index.html"
 }).catch((e)=>{
     console.log("Can't signin")
     console.log(e)
