@@ -25,9 +25,9 @@ contForm.addEventListener('submit', function(e){
             email: contEmail.value,
             message: contMessage.value
         }).then(()=>{
-            alert("Thank you for submitting your form.")
+            alert("Thank you for sending your message.")
             contForm.reset()
-            window.location='../index.html'
+            window.location='../pages/index.html'
         })
     }else{
         alert("An error occured. Fill the form correctly and try again.")
