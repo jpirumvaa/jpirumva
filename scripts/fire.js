@@ -21,8 +21,6 @@ var firebaseConfig = {
     if(user){
         console.log("Hello from user:", user.uid)
         db.collection('users').doc(user.uid).get().then(info=>{
-          console.log(info.data())
-
           if(info.data().isAdmin===true){
             admin.style.display='inline-block'
             logoBtn.style.display="inline-block"
@@ -33,9 +31,7 @@ var firebaseConfig = {
             logBtn.style.display= 'none'         
             
           }
-
         })
-
     }else{
       logoBtn.style.display="none"
       admin.style.display= 'none' 
