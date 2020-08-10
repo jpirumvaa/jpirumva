@@ -7,8 +7,8 @@ const username = document.querySelector('.username');
 const email = document.querySelector('.email');
 const password = document.querySelector('.password');
 const password2 = document.querySelector('.password2');
-const loginBtn= document.querySelector('.loginbtn')
-const logoutBtn= document.querySelector('#logout')
+const loginBtn= document.querySelector('.logbtn')
+const logoutBtn= document.querySelector('#logoutBtn')
 
 signupForm.addEventListener('submit', function(e) {
     e.preventDefault();
@@ -46,7 +46,8 @@ signupForm.addEventListener('submit', function(e) {
         logoutBtn.style.display="inline-block"
         window.location="../pages/index.html"
     }).catch((e)=>{
-        console.log("Not able to post information")
+        console.log("Not able to post information", e)
+        e.message?alert(e.message):
         alert("Your information was not saved. If you are sure that you have filled the correct information,check your connection and try again later")
     }):console.log("passwords should match")
 
