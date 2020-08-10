@@ -36,8 +36,8 @@ signupForm.addEventListener('submit', function(e) {
             email: emailAddress,
             isAdmin: false,
             location:{
-                latutude: lat!=='underfined'?lat:'Location Dinied',
-                longitude: long!=='underfined'?long:'Location Dinied',
+                latutude: lat,
+                longitude: long,
             }
         })
     }).then(()=>{
