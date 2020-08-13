@@ -18,7 +18,7 @@ var firebaseConfig = {
 
 
   auth.onAuthStateChanged(user=>{
-    if(user){
+    if(user!==undefined){
         console.log("Hello from user:", user.uid)
         db.collection('users').doc(user.uid).get().then(info=>{
           if(info.data().isAdmin===true){

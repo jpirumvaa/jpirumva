@@ -36,8 +36,8 @@ signupForm.addEventListener('submit', function(e) {
             email: emailAddress,
             isAdmin: false,
             location:{
-                latutude: lat,
-                longitude: long,
+                latutude: lat!==undefined?lat:"No latutude",
+                longitude: long!==undefined?lat:"No longitude",
             }
         })
     }).then(()=>{
@@ -52,7 +52,6 @@ signupForm.addEventListener('submit', function(e) {
     }):console.log("passwords should match")
 
     console.log(emailAddress, pass, secondPass, name)
-
     checkRequired([username, password, password2, email]);
     checkLength(username, 3, 15);
     checkLength(password, 6, 25);
