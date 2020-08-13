@@ -1,12 +1,15 @@
 const blogPart= document.querySelector(".blog-d")
 const summary= document.querySelector(".summary")
 const commentsPart= document.querySelector('.comments')
+const container= document.querySelector('.container')
+const spinner= document.querySelector('.load')
 
 
 
 const setupBlog= (data, id)=>{
     let blogUI="";
-    const blog= data.data() 
+    const blog= data.data()
+    console.log(blog.avatarURL) 
     const blogId= id      
         if(blog!=undefined){
             const bl=`
@@ -82,7 +85,6 @@ const setupComments = (data)=>{
             `
             ui+=cui
         }
-        console.log(ui)   
     })
     commentsPart.innerHTML= ui
 }
@@ -102,7 +104,6 @@ const setupBlogSummary= (data)=>{
     let blogSummaryUI="";
     data.forEach(item=>{
         const blogSummary= item.data()
-        console.log(blogSummary)
         const blogId= item.id
         if(blogSummary!=undefined){
             const blSummary=`
@@ -132,14 +133,17 @@ const setupBlogSummary= (data)=>{
 const generateId =(e)=>{
     let id= e.getAttribute('id')
     db.collection('articles').doc(id).get().then(info=>{
-        console.log(info)
         setupBlog(info, id)
     })
 }
 
+
 db.collection('articles').get().then(info=>{    
     setupBlogSummary(info.docs)
+}).then(()=>{
+    container.style.display= 'block'
+    spinner.style.display='none'
 }).catch((e)=>{
-    alert("Unable to retrieve data. Please, check your network and try again.")
+    alert("An error occured. Check your network and try again.")
     console.log(e)
 })

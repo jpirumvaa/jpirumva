@@ -9,6 +9,8 @@ const password = document.querySelector('.password');
 const password2 = document.querySelector('.password2');
 const loginBtn= document.querySelector('.logbtn')
 const logoutBtn= document.querySelector('#logoutBtn')
+const container= document.querySelector('.log-container')
+const spinner= document.querySelector('.load')
 
 signupForm.addEventListener('submit', function(e) {
     e.preventDefault();
@@ -36,7 +38,7 @@ signupForm.addEventListener('submit', function(e) {
             email: emailAddress,
             isAdmin: false,
             location:{
-                latutude: lat!==undefined?lat:"No latutude",
+                latitude: lat!==undefined?lat:"No latutude",
                 longitude: long!==undefined?lat:"No longitude",
             }
         })
@@ -51,15 +53,11 @@ signupForm.addEventListener('submit', function(e) {
         alert("Your information was not saved. If you are sure that you have filled the correct information,check your connection and try again later")
     }):console.log("passwords should match")
 
-    console.log(emailAddress, pass, secondPass, name)
     checkRequired([username, password, password2, email]);
     checkLength(username, 3, 15);
     checkLength(password, 6, 25);
     checkEmail(email);
     checkPasswordsMatch(password, password2);
-
-
-    
 });
 
 logoutBtn.addEventListener('click',(e)=>{
@@ -68,5 +66,14 @@ logoutBtn.addEventListener('click',(e)=>{
         window.location='../pages/login.html'
         console.log("Signed Out successfully")
     })
+})
+db.collection('users').get().then(info=>{    
+    console.log(info.docs)
+}).then(()=>{
+    container.style.display= 'block'
+    spinner.style.display='none'
+}).catch((e)=>{
+    alert("An error occured. Check your network and try again.")
+    console.log(e)
 })
 

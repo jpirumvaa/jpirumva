@@ -1,5 +1,7 @@
 const featuredWorksDOM= document.querySelector(".featured-activities")
 const summary= document.querySelector(".blog-summary")
+const container= document.querySelector('.container')
+const spinner= document.querySelector('.load')
 
 
 
@@ -24,8 +26,16 @@ const displayHomeProjects= (projects)=>{
     })
     featuredWorksDOM.innerHTML=homeResults
 }
+
+container.style.display= 'none'
 db.collection('projects').get().then(info=>{
     displayHomeProjects(info.docs)
+}).then(()=>{
+    container.style.display= 'block'
+    spinner.style.display='none'
+}).catch((e)=>{
+    alert("An error occured. Check your network and try again.")
+    console.log(e)
 })
 
 //Blogs

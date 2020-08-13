@@ -19,6 +19,9 @@ const updateAvatar= document.querySelector(".update-avatar")
 const articlesPart= document.querySelector('.articles-part')
 const realArticles= document.querySelector('.arti')
 
+const container= document.querySelector('.projects-container')
+const spinner= document.querySelector('.load')
+
 const setupMessages= (data)=>{
     let messageUI= `<h2 class="center">Messages</h2>`
     data.forEach(item=>{
@@ -43,8 +46,7 @@ avatar.onchange= e =>{
     files= e.target.files;
     reader= new FileReader();
     reader.onload=function(){
-        imageURLs.push(reader.result)
-        
+        imageURLs.push(reader.result)       
         
     }
     reader.readAsDataURL(files[0])
@@ -147,6 +149,7 @@ addForm.addEventListener('submit', function(e){
         }).then(()=>{
             alert("Thank you for submitting your form.")
             addForm.reset()
+            imageURLs= []
         }).then(()=>{
             articlesPart.innerHTML=""
             db.collection('articles').get().then(info=>{
@@ -243,4 +246,10 @@ function editItem(e){
 
 db.collection('articles').get().then(info=>{
     setupArticles(info.docs)
+}).then(()=>{
+    container.style.display= 'block'
+    spinner.style.display='none'
+}).catch((e)=>{
+    alert("An error occured. Check your network and try again.")
+    console.log(e)
 })
