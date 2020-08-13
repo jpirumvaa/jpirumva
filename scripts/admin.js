@@ -3,9 +3,7 @@ const addForm= document.querySelector(".admin-f")
 const adminAdd=document.querySelector('.admin-form')
 const adminUpdate= document.querySelector('.update-form')
 const updateForm= document.querySelector('.update')
-var reader;
-var files=[];
-var imageURLs=[]
+
 const avatar= document.querySelector(".avatar")
 const author= document.querySelector(".author")
 const title=document.querySelector(".article-title")
@@ -42,16 +40,7 @@ const setupMessages= (data)=>{
     messages.innerHTML= messageUI
 }
 
-avatar.onchange= e =>{
-    files= e.target.files;
-    reader= new FileReader();
-    reader.onload=function(){
-        imageURLs.push(reader.result)       
-        
-    }
-    reader.readAsDataURL(files[0])
-    
-}
+
 
 db.collection('messages').get().then(info=>{
     setupMessages(info.docs)
@@ -135,6 +124,20 @@ let publicationTime= today.getTime()
 
 var dateTime=`${date} ${time}`
 
+var reader;
+var files=[];
+var imageURLs=[]
+
+avatar.onchange= e =>{
+    files= e.target.files;
+    reader= new FileReader();
+    reader.onload=function(){
+        imageURLs.push(reader.result)       
+        
+    }
+    reader.readAsDataURL(files[0])
+    
+}
 addForm.addEventListener('submit', function(e){
     e.preventDefault()    
         db.collection('articles').add({

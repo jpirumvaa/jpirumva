@@ -7,6 +7,11 @@ const logPassword= document.querySelector('.log-password')
 const container= document.querySelector('.log-container')
 const spinner= document.querySelector('.load')
 
+const reset= document.querySelector('.reset')
+const forgotBtn= document.querySelector('.f-pass')
+const resetEmail= document.querySelector('.reset-email')
+const save= document.querySelector('.save')
+
 
 logForm.addEventListener('submit', function(e){
   e.preventDefault()
@@ -14,7 +19,6 @@ logForm.addEventListener('submit', function(e){
   const userEmail= logEmail.value
   const userPassword= logPassword.value
   auth.signInWithEmailAndPassword(userEmail, userPassword).then(userInfo=>{
-    console.log(userInfo.user)
     logForm.reset()
     window.location="../pages/index.html"
 }).catch((e)=>{
@@ -22,6 +26,21 @@ logForm.addEventListener('submit', function(e){
     console.log(e)
     alert("Either Email or password is incorrect. Check your input and try again.")
 })
+})
+forgotBtn.addEventListener('click', e=>{
+  e.preventDefault()
+  reset.style.display= reset.style.display=='block'?'none':'block'
+})
+console.log(resetEmail.value)
+save.addEventListener('click', (e)=>{
+  e.preventDefault()
+  auth.sendPasswordResetEmail(resetEmail.value).then(()=>{
+    console.log("Password reset email sent successfully")
+    reset.style.display= 'none'
+  }).catch((e)=>{
+    alert(e.message)
+    console.log(e)
+  })
 })
 
 db.collection('users').get().then(info=>{    

@@ -472,7 +472,7 @@ textarea{
 .form button{
 	width: 100%;
 }
-.form button, .btn, .prof{
+.form button, .btn, .prof, .save{
 	cursor: pointer;
 	background-color: #3498db;
 	border: 2px solid #3498db;
@@ -586,4 +586,11 @@ tr:nth-child(even) {
 }
 .c-btn{
 	width: 70%;
+}
+.login-form .reset{
+	display: none;
+}
+.save{
+	text-decoration: none;
+	text-align: center;
 }
