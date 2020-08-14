@@ -423,9 +423,7 @@ article{
 	margin-top: 2em;
 }
 .comments, .messages{
-	white-space: pre-line;
-	
-
+	margin:3em;
 }
 .comment .message{
 	margin-top: 2em;
