@@ -472,7 +472,7 @@ textarea{
 .form button{
 	width: 100%;
 }
-.form button, .btn, .prof, .save{
+.form button, .btn, .prof, .save,.p-btn{
 	cursor: pointer;
 	background-color: #3498db;
 	border: 2px solid #3498db;
@@ -486,6 +486,11 @@ textarea{
 .btn{
 	width: 30%;
 	margin-left: 1em;
+	
+}
+.p-btn{
+	width: 20%;
+	display: inline;
 	
 }
 
@@ -564,6 +569,16 @@ tr:nth-child(even) {
 }
 .user-intro{
 	color: black;
+}
+.user-info{
+width: 100%;
+margin: 0 auto;
+}
+.full-profile{
+	color: black;
+	width: 40%;
+	margin: 3em auto;
+
 }
 
 

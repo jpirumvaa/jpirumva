@@ -34,6 +34,7 @@ signupForm.addEventListener('submit', function(e) {
     auth.createUserWithEmailAndPassword(emailAddress, pass).then(userInfo=>{
         return db.collection('users').doc(userInfo.user.uid).set({
             name: name,
+            displayName: "",
             password: pass,
             email: emailAddress,
             isAdmin: false,

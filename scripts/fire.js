@@ -1,6 +1,7 @@
 const admin= document.querySelector('.admin')
 const logBtn= document.querySelector('.logbtn')
 const logoBtn= document.querySelector('#logoutBtn')
+const profileP= document.querySelector('.profi')
 
 var firebaseConfig = {
     apiKey: "AIzaSyCpZkW_WyIlVBxeNNvN2DWWxQ5BHbnIV50",
@@ -36,6 +37,7 @@ var firebaseConfig = {
       logoBtn.style.display="none"
       admin.style.display= 'none' 
       logBtn.style.display= 'inline-block'
+      profileP.style.display='none'
     }
   })
 
