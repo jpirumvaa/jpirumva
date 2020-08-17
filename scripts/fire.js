@@ -2,6 +2,17 @@ const admin= document.querySelector('.admin')
 const logBtn= document.querySelector('.logbtn')
 const logoBtn= document.querySelector('#logoutBtn')
 const profileP= document.querySelector('.profi')
+const navMenu= document.querySelector('#menu')
+const navList= document.querySelector('.nav-list')
+const navPart=document.querySelector('.nav-icon')
+
+
+  navMenu.addEventListener('click',()=>{
+    navList.classList.toggle('show')
+    navPart.classList.toggle('display')
+  })
+
+
 
 var firebaseConfig = {
     apiKey: "AIzaSyCpZkW_WyIlVBxeNNvN2DWWxQ5BHbnIV50",

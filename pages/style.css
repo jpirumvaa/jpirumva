@@ -91,6 +91,7 @@ body {
 .bg{
 	height: 38em;
 	width: 100%;
+	margin-top: -50px;
 	position: fixed;
 	z-index: -1;
 }
@@ -282,7 +283,16 @@ article{
 }
 
 
-@media(max-width: 760px){
+
+@media(max-width: 1020px){
+	.blog-summary{
+		display: flex;
+		flex-direction: column;
+	}
+	.blog{
+		width: 70%;
+		margin: 0 auto;
+	}
 	.last{
 		flex-direction: column;
 		text-align: center;
@@ -290,16 +300,25 @@ article{
 	.copy{
 		margin-top: 2em;
 	}
-}
-@media(max-width: 800px){
 	.nav-list{
 		display:none;
 		flex-direction: column;
-		height: 18rem;
+		height: 23rem;
 		background-color: var(--headAndFoot);
 		margin-top: 17em;
 		padding: 3em;
-		width: 200px;
+		width: 250px;
+	}
+	.show{
+		display: flex;
+		padding-top: 0; 
+		margin-top: 0; 
+		opacity: 0.8
+	}
+	.display{
+		justify-self: flex-end; 
+		margin-top: 21.5em; 
+		padding-top: 2em
 	}
 	.nav-icon{
 		display:flex;
@@ -335,15 +354,8 @@ article{
 		cursor: pointer;
 		text-align: end;
 	}
-	.nav-icon:hover .nav-list{
-		display: flex;
-		padding-top: 0;
-		margin-top: 0;
-	}
-	.nav-icon:hover{
-		justify-self: flex-end;
-		margin-top: 18em;
-	}
+
+
 }
 .form-control small{
 	color: var(--error-color);
@@ -378,16 +390,7 @@ article{
 	grid-template-columns: 1fr 2fr;
 	background-color: #F0F3F4;
 }
-@media(max-width: 890px){
-	.blogs{
-		display: flex;
-		flex-direction: column;
-	}
-	.blog{
-		width: 60%;
-		margin: 0 auto;
-	}
-}
+
 .summary{
 	display: flex;
 	flex-direction: column;
@@ -506,13 +509,13 @@ textarea{
 
 @media(max-width: 1130px){
 	.log-form{
-		width: 40vw;
+		width: 70vw;
 	}
 }
 
 @media(max-width: 810px){
 	.log-form{
-		width: 60vw;
+		width: 80vw;
 	}
 }
 @media(max-width: 540px){
