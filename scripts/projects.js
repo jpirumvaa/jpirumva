@@ -1,5 +1,7 @@
 const projectsDOM= document.querySelector(".domworks")
 const projFooter= document.querySelector('.cont-footer')
+const container= document.querySelector('.projects-container')
+const spinner= document.querySelector('.load')
 
 async function getProjects(){
     try{
@@ -52,6 +54,12 @@ const displayProjects= (projects)=>{
 
 db.collection('projects').get().then(info=>{
     displayProjects(info.docs)
+}).then(()=>{
+    container.style.display= 'block'
+    spinner.style.display='none'
+}).catch((e)=>{
+    alert("An error occured. Check your network and try again.")
+    console.log(e)
 })
 /*
 document.addEventListener("DOMContentLoaded", ()=>{

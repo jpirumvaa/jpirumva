@@ -5,30 +5,35 @@
 		<title>Jean Pierre Imanirumva</title>
 	</head>
 	<body>
+    <div  class="load">
+        <img src="https://apps.tampagov.net/Community_Webapp/images/loader.gif">
+    </div>
 	<div class="projects-container">
 		<nav class='navbar'>
 			<a href="https://github.com/jpirumvaa" target="_blank" class="git"><img src="https://img.icons8.com/fluent/48/000000/github.png"/>View on Github</a>
 			<span class="nav-icon">
 				<img id="menu" src="https://img.icons8.com/fluent/48/000000/menu--v1.png"/>
-				<div class="nav-list">
-					<a href="index.html">Home</a>
-					<a href="./Projects/projects.html">Projects</a>
-					<a href="./Forms/contact.html">Contact</a>
-					<a href="blog.html">Blog</a>
-					<a href="./Forms/login.html">Log In</a>
-				</div>
+                <div class="nav-list">
+                    <a href="./index.html">Home</a>
+                    <a href="./projects.html">Projects</a>
+                    <a href="./contact.html">Contact</a>
+                    <a href="./blog.html">Blog</a>
+                    <a class="profi" href="./userProfile.html">My Profile</a>
+                    <a class="logbtn" href="./login.html">Log In</a>
+                    <a href="" id="logoutBtn">Logout</a>
+                    <a class="admin" href="./admin.html"><img src="https://img.icons8.com/color/40/000000/admin-settings-male.png"/></a>
+                </div>
 			</span>
-
 		</nav>
 		<div class="admin-part">
 			<div class='admin-intro'>
                 <div class="center">
-                    <img alt="profile" class="profile" src="profile.png"/>
+                    <img alt="profile" class="profile" src="../utils/profile.png"/>
                     <h1>Administrator</h1>
                 </div>                
                 <button class="btn add">Add Article</button>
                 <div class="admin-form">                
-                    <form id= "form" class="form admin">
+                    <form id= "form" class="form admin-f">
                         <h2>Fill required information for the article.</h2>
                         <div class="form-control">
                             <label for="username">Author</label>
@@ -113,9 +118,9 @@
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
-    <script src="./fire.js"></script>
-    <script src="admin.js"></script>
-	<script src="script.js"></script>
+    <script src="../scripts/fire.js"></script>
+    <script src="../scripts/admin.js"></script>
+	<script src="../scripts/script.js"></script>
 	</body>
 
 </html>

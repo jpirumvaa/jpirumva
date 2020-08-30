@@ -2,27 +2,30 @@
 <html>
 	<head>
 		<title>Register</title>
-		<link rel="stylesheet" href="../style.css">	
+		<link rel="stylesheet" href="./style.css">	
 
 	</head>
 	
 	<body>
+		<div  class="load">
+			<img src="https://apps.tampagov.net/Community_Webapp/images/loader.gif">
+		</div>
 		<div class='log-container'>
 			<nav class='navbar'>
 				<a href="https://github.com/jpirumvaa" target="_blank" class="git"><img src="https://img.icons8.com/fluent/48/000000/github.png"/>View on Github</a>
 				<span class="nav-icon">
 					<img id="menu" src="https://img.icons8.com/fluent/48/000000/menu--v1.png"/>
 					<div class="nav-list">
-						<a href="../index.html">Home</a>
-						<a href="../Projects/projects.html">Projects</a>
-						<a href="contact.html">Contact</a>
-						<a href="../blog.html">Blog</a>
-						<a class="loginbtn" href="login.html">Log In</a>
-						<a href="" id="logout">Logout</a>
-						<a class="admin" href="../admin.html"><img src="https://img.icons8.com/color/40/000000/admin-settings-male.png"/></a>
+						<a href="./index.html">Home</a>
+						<a href="./projects.html">Projects</a>
+						<a href="./contact.html">Contact</a>
+						<a href="./blog.html">Blog</a>
+						<a class="profi" href="./userProfile.html">My Profile</a>
+						<a class="logbtn" href="./login.html">Log In</a>
+						<a href="" id="logoutBtn">Logout</a>
+						<a class="admin" href="./admin.html"><img src="https://img.icons8.com/color/40/000000/admin-settings-male.png"/></a>
 					</div>
 				</span>
-	
 			</nav>
 			<div data-aos="zoom-out" data-aos-duration="1000" class="log-form">
 				<form id= "form" class="form signup-form">
@@ -46,8 +49,8 @@
 					</div>
 					
 					<div class="form-control">
-						<label for="password2">Repeat Password</label>
-						<input type="password" class="password2" id="password2" placeholder="Repeat your password">
+						<label for="password2">Confirm Password</label>
+						<input type="password" class="password2" id="password confirmation" placeholder="Repeat your password">
 						<small></small>		
 					</div>
 					<button>Submit</button><br/>
@@ -74,8 +77,8 @@
 		<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
-		<script src="../fire.js"></script>
-		<script type="module" src="signup.js"></script>
+		<script src="../scripts/fire.js"></script>
+		<script type="module" src="../scripts/signup.js"></script>
 	</body>
 
 </html>

@@ -5,14 +5,9 @@ const contEmail= document.querySelector('.cont-email')
 const contUsername= document.querySelector('.cont-username')
 const contMessage= document.querySelector('.cont-message')
 
-auth.onAuthStateChanged(user=>{
-    if(user){
-        console.log("Hello from user:", user)
-    }else{
-    window.location= "login.html"
-    }
+const container= document.querySelector('.log-container')
+const spinner= document.querySelector('.load')
 
-})
 contForm.addEventListener('submit', function(e){
     e.preventDefault()  
     checkRequired([contUsername, contEmail, contMessage])
@@ -25,11 +20,20 @@ contForm.addEventListener('submit', function(e){
             email: contEmail.value,
             message: contMessage.value
         }).then(()=>{
-            alert("Thank you for submitting your form.")
+            alert("Thank you for sending your message.")
             contForm.reset()
-            window.location='../index.html'
+            window.location='../pages/index.html'
         })
     }else{
         alert("An error occured. Fill the form correctly and try again.")
     }
+})
+db.collection('users').get().then(info=>{    
+    console.log(info.docs)
+}).then(()=>{
+    container.style.display= 'block'
+    spinner.style.display='none'
+}).catch((e)=>{
+    alert("An error occured. Check your network and try again.")
+    console.log(e)
 })

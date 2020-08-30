@@ -1,11 +1,9 @@
 const messages= document.querySelector(".messages")
-const addForm= document.querySelector(".admin")
+const addForm= document.querySelector(".admin-f")
 const adminAdd=document.querySelector('.admin-form')
 const adminUpdate= document.querySelector('.update-form')
 const updateForm= document.querySelector('.update')
-var reader;
-var files=[];
-var imageURLs=[]
+
 const avatar= document.querySelector(".avatar")
 const author= document.querySelector(".author")
 const title=document.querySelector(".article-title")
@@ -18,6 +16,9 @@ const updateAvatar= document.querySelector(".update-avatar")
 
 const articlesPart= document.querySelector('.articles-part')
 const realArticles= document.querySelector('.arti')
+
+const container= document.querySelector('.projects-container')
+const spinner= document.querySelector('.load')
 
 const setupMessages= (data)=>{
     let messageUI= `<h2 class="center">Messages</h2>`
@@ -39,17 +40,7 @@ const setupMessages= (data)=>{
     messages.innerHTML= messageUI
 }
 
-avatar.onchange= e =>{
-    files= e.target.files;
-    reader= new FileReader();
-    reader.onload=function(){
-        imageURLs.push(reader.result)
-        
-        
-    }
-    reader.readAsDataURL(files[0])
-    
-}
+
 
 db.collection('messages').get().then(info=>{
     setupMessages(info.docs)
@@ -130,13 +121,25 @@ switch (day) {
 var date = `${realDay}, ${realMonth} ${today.getDate()}, ${today.getFullYear()}`;
 var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
 let publicationTime= today.getTime()
-console.log(publicationTime)
 
 var dateTime=`${date} ${time}`
 
-addForm.addEventListener('submit', function(e){
-    e.preventDefault()
+var reader;
+var files=[];
+var imageURLs=[]
+
+avatar.onchange= e =>{
+    files= e.target.files;
+    reader= new FileReader();
+    reader.onload=function(){
+        imageURLs.push(reader.result)       
+        
+    }
+    reader.readAsDataURL(files[0])
     
+}
+addForm.addEventListener('submit', function(e){
+    e.preventDefault()    
         db.collection('articles').add({
             title: title.value,
             author: author.value,
@@ -149,6 +152,7 @@ addForm.addEventListener('submit', function(e){
         }).then(()=>{
             alert("Thank you for submitting your form.")
             addForm.reset()
+            imageURLs= []
         }).then(()=>{
             articlesPart.innerHTML=""
             db.collection('articles').get().then(info=>{
@@ -241,10 +245,14 @@ function editItem(e){
     db.collection('articles').doc(id).get().then(info=>{
         editArticle(info)    
     })
-
-    //console.log(id)
 }
 
 db.collection('articles').get().then(info=>{
     setupArticles(info.docs)
+}).then(()=>{
+    container.style.display= 'block'
+    spinner.style.display='none'
+}).catch((e)=>{
+    alert("An error occured. Check your network and try again.")
+    console.log(e)
 })
