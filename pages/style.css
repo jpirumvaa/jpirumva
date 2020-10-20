@@ -614,3 +614,9 @@ tr:nth-child(even) {
   text-decoration: none;
   text-align: center;
 }
+.cont-forms {
+  font-family: "Poppins", sans-serif;
+  min-height: 100vh;
+  margin: 0 auto;
+  width: 40vw;
+}

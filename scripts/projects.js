@@ -5,10 +5,9 @@ const spinner= document.querySelector('.load')
 
 async function getProjects(){
     try{
-        let results = await fetch('../Projects/projects.json')
+        let results = await fetch('../scripts/projects.json')
         let data= await results.json()
         let projects= data.items
-
         return projects
     }catch(error){
         console.log(error)
@@ -19,7 +18,8 @@ async function getProjects(){
 
 const displayProjects= (projects)=>{
     let results=""
-
+    console.log(projects)
+    
     projects.forEach(item=>{
         let project= item.data()
         /*
@@ -28,7 +28,8 @@ const displayProjects= (projects)=>{
             img: project.img,
             description: project.description,
             url: project.url
-        }).then((data)=>console.log(data))*/
+        }).then((data)=>console.log(data))
+       */ 
     results+=`
         <article class="work">
             <div class="img-container">
@@ -44,6 +45,7 @@ const displayProjects= (projects)=>{
 `
     })
     projectsDOM.innerHTML=results  
+
 }
 
 
@@ -51,6 +53,7 @@ const displayProjects= (projects)=>{
 
 
 
+//getProjects().then(projectss=>displayProjects(projectss))
 
 db.collection('projects').get().then(info=>{
     displayProjects(info.docs)
