@@ -21,7 +21,6 @@ let ui=`
             `
 let profUI= `
     <p><b>Registered Email:</b> ${user.email}</p>
-    <p><b>Password:</b> ${user.password}.</p>
     <p><b>User Name:</b> ${user.name}</p>
     <p><b>Display Name:</b> ${user.displayName}</p>
     <p><b>Location:</b><br>
